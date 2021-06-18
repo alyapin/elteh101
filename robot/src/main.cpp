@@ -96,12 +96,6 @@ void steerRight()
 
     r_motor.runSpeed();
     l_motor.runSpeed();
-//    analogWrite(SPEED_RIGHT, 0);
-//    analogWrite(SPEED_LEFT, SPEED);
-// 
-//    digitalWrite(DIR_LEFT, HIGH);
-//    digitalWrite(DIR_RIGHT, HIGH);
-}
  
 void steerLeft() 
 {
@@ -117,11 +111,6 @@ void steerLeft()
     r_motor.runSpeed();
     l_motor.runSpeed();
  
-//    analogWrite(SPEED_LEFT, 0);
-//    analogWrite(SPEED_RIGHT, SPEED);
-// 
-//    digitalWrite(DIR_LEFT, HIGH);
-//    digitalWrite(DIR_RIGHT, HIGH);
 }
  
  
@@ -141,12 +130,6 @@ void stepBack(int duration, int state) {
 
     r_motor.runSpeed();
     l_motor.runSpeed();
-//    analogWrite(SPEED_LEFT, leftSpeed);
-//    analogWrite(SPEED_RIGHT, rightSpeed);
-// 
-//    // реверс колёс
-//    digitalWrite(DIR_RIGHT, LOW);
-//    digitalWrite(DIR_LEFT, LOW);
  
     delay(duration);
 }
@@ -165,14 +148,6 @@ void setup()
     r_motor.setAcceleration(100);
     l_motor.setAcceleration(100);
 
-//    r_motor.setSpeed(500);
-//    r_motor.runSpeed();
-//
-//
-//    s28BYJ_48.setMaxSpeed(900.0);
-//    s28BYJ_48.setAcceleration(100.0);
-//    s28BYJ_48.setSpeed(200);
-//    s28BYJ_48.moveTo(2000);
     // Сразу едем вперёд
     runForward();
 } 
@@ -184,12 +159,8 @@ void loop()
     boolean left = !digitalRead(LEFT_SENSOR_PIN);
     boolean right = !digitalRead(RIGHT_SENSOR_PIN);
 
-//    Serial.print("LEFT sensor: ");
-//    Serial.println(left);
-//    Serial.print("RIGHT sensor: ");
-//    Serial.println(right);
  
-    // В какое состояние нужно перейти?
+    // В какое состояние нужно перейти
     int targetState;
  
     if (left == right) {
@@ -197,7 +168,7 @@ void loop()
         // едем вперёд
         targetState = STATE_FORWARD;
     } else if (right) {
-        // левый сенсор упёрся в трек
+        // правый сенсор упёрся в трек
         // поворачиваем налево
         targetState = STATE_LEFT;
     } else {
