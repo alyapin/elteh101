@@ -59,14 +59,15 @@ void rainbow(int wait) {
 
 void loop() {
   // Один цвет вдоль всей ленты
-  // colorWipe(strip.Color(255,   0,   0), 50); // Red
-  // colorWipe(strip.Color(  0, 255,   0), 50); // Green
-//   colorWipe(strip.Color(  0,   0, 255), 50); // Blue
+  colorWipe(strip.Color(127, 127, 127), brightnes);
+//  colorWipe(strip.Color(255,   0,   0), brightnes); // Red
+  // colorWipe(strip.Color(  0, 255,   0), brightnes0); // Green
+//   colorWipe(strip.Color(  0,   0, 255), brightnes); // Blue
 
 //   Мерцание разных цветов
-   theaterChase(strip.Color(127, 127, 127), brightnes); // Белый, половина яркости
-   theaterChase(strip.Color(127,   0,   0), brightnes); // Красный
-    theaterChase(strip.Color(  0,   0, 127), brightnes); // Голубой
+//   theaterChase(strip.Color(127, 127, 127), brightnes); // Белый, половина яркости
+//   theaterChase(strip.Color(127,   0,   0), brightnes); // Красный
+//    theaterChase(strip.Color(  0,   0, 127), brightnes); // Голубой
 
   //Радуга с заданной задержкой
 //  rainbow(50);

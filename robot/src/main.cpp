@@ -1,14 +1,5 @@
 
 #include <AccelStepper.h>
-//// Моторы подключаются к клеммам M1+,M1-,M2+,M2-  
-//// Motor shield использует четыре контакта 6,5,7,4 для управления моторами
-//#define DIR_LEFT         7
-//#define SPEED_LEFT       6
-//
-////Right motor
-//#define DIR_RIGHT        4
-//#define SPEED_RIGHT      5
-
 //Right motor
 #define R_IN1 6
 #define R_IN2 7
@@ -32,7 +23,7 @@ AccelStepper r_motor(8, L_IN4, L_IN2, L_IN3, L_IN1);
 #define RIGHT_SENSOR_PIN A1
  
 // Скорость, с которой мы движемся вперёд (0-255)
-#define SPEED            100
+#define SPEED            150
  
 // Скорость прохождения сложных участков
 #define SLOW_SPEED       35
@@ -42,7 +33,7 @@ AccelStepper r_motor(8, L_IN4, L_IN2, L_IN3, L_IN1);
  
 // Коэффициент, задающий во сколько раз нужно затормозить
 // одно из колёс для поворота
-#define BRAKE_K          4
+#define BRAKE_K          8
  
 #define STATE_FORWARD    0
 #define STATE_RIGHT      1
@@ -75,11 +66,6 @@ void runForward()
 
     r_motor.runSpeed();
     l_motor.runSpeed();
-//    analogWrite(SPEED_LEFT, currentSpeed);
-//    analogWrite(SPEED_RIGHT, currentSpeed);
-// 
-//    digitalWrite(DIR_LEFT, HIGH);
-//    digitalWrite(DIR_RIGHT, HIGH);
 }
  
 void steerRight() 
@@ -96,6 +82,7 @@ void steerRight()
 
     r_motor.runSpeed();
     l_motor.runSpeed();
+}
  
 void steerLeft() 
 {
@@ -111,6 +98,7 @@ void steerLeft()
     r_motor.runSpeed();
     l_motor.runSpeed();
  
+
 }
  
  
@@ -148,7 +136,6 @@ void setup()
     r_motor.setAcceleration(100);
     l_motor.setAcceleration(100);
 
-    // Сразу едем вперёд
     runForward();
 } 
  
@@ -168,7 +155,7 @@ void loop()
         // едем вперёд
         targetState = STATE_FORWARD;
     } else if (right) {
-        // правый сенсор упёрся в трек
+        // левый сенсор упёрся в трек
         // поворачиваем налево
         targetState = STATE_LEFT;
     } else {
